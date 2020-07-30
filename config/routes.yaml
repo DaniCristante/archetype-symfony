@@ -1,3 +1,7 @@
+paginator:
+    path: /paginator
+    controller: App\Controller\PageController::index
+    
 frontoffice:
     resource: routes/frontoffice.yaml
     trailing_slash_on_root: false

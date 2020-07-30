@@ -14,11 +14,20 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PageRepository extends ServiceEntityRepository
 {
+    protected $entityManager;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Page::class);
     }
 
+    public function getPagesQueryBuilder()
+    {
+        return $this->createQueryBuilder()
+            ->select('page')
+            ->from('PageRepository::class', 'page');
+    }
+    
     // /**
     //  * @return Page[] Returns an array of Page objects
     //  */
