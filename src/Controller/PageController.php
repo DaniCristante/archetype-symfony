@@ -24,10 +24,11 @@ class PageController extends AbstractController
 
     public function index(Request $request)
     {
+        $page = $request->get('page', 1);
         //mover llamada repository a PageService, retornar modelo.
         $queryBuilder = $this->pageRepository->getPagesQueryBuilder();
         
-        $pagination = $this->paginator->paginate($queryBuilder, $request->get('page'), 5);
+        $pagination = $this->paginator->paginate($queryBuilder, $page, 5);
 
         return $this->render('page/index.html.twig', [
             'controller_name' => 'PageController',
