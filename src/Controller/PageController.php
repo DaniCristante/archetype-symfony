@@ -22,7 +22,7 @@ class PageController extends AbstractController
         $this->paginator = $paginator;
     }
 
-    public function index(Request $request)
+    public function list(Request $request)
     {
         $page = $request->get('page', 1);
         //mover llamada repository a PageService, retornar modelo.
@@ -30,7 +30,7 @@ class PageController extends AbstractController
         
         $pagination = $this->paginator->paginate($queryBuilder, $page, 5);
 
-        return $this->render('page/index.html.twig', [
+        return $this->render('page/_list-page.html.twig', [
             'controller_name' => 'PageController',
             'pagination' => $pagination
         ]);
