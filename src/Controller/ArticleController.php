@@ -6,13 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\ArticleService;
+use App\Service\PageRendererService;
 
 class ArticleController extends AbstractController
 {
     protected $service;
+    protected $renderer;
 
-    public function __construct(ArticleService $service)
+    public function __construct(PageRendererService $renderer, ArticleService $service)
     {
+        $this->renderer = $renderer;
         $this->service = $service;
     }
 
@@ -20,11 +23,6 @@ class ArticleController extends AbstractController
     {
         $page = $request->get('page', 1);
         $model = $this->service->getArticleListViewModel($page);
-
-        dump($model);die();
-        return $this->render('page/_list-page.html.twig', [
-            'controller_name' => 'PageController',
-            'model' => $model,
-        ]);
+        return $this->renderer->renderResponse('pages/_list-page.html.twig', $model);
     }
 }
