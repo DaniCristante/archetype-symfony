@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\ArticleService;
 use App\Service\PageRendererService;
+use Symfony\Component\HttpFoundation\Response;
 
 class ArticleController extends AbstractController
 {
@@ -19,10 +20,11 @@ class ArticleController extends AbstractController
         $this->service = $service;
     }
 
-    public function list(Request $request)
+    public function list(Request $request): Response
     {
         $page = $request->get('page', 1);
         $model = $this->service->getArticleListViewModel($page);
+        
         return $this->renderer->renderResponse('pages/_list-page.html.twig', $model);
     }
 }
