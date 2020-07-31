@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c3b105bc18d0a1917495af1f9e117b8",
+    "content-hash": "34e8f7f53ce510557f6c617c686f3eb8",
     "packages": [
         {
             "name": "a2lix/auto-form-bundle",
@@ -5344,25 +5344,24 @@
         },
         {
             "name": "sonata-project/user-bundle",
-            "version": "4.6.0",
+            "version": "4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "c651248a0b4adcfae007a3a7bdc501e95eedea61"
+                "reference": "782cdcd7b9e73270784ff00e34df85fa18c463d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/c651248a0b4adcfae007a3a7bdc501e95eedea61",
-                "reference": "c651248a0b4adcfae007a3a7bdc501e95eedea61",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/782cdcd7b9e73270784ff00e34df85fa18c463d3",
+                "reference": "782cdcd7b9e73270784ff00e34df85fa18c463d3",
                 "shasum": ""
             },
             "require": {
                 "friendsofsymfony/user-bundle": "^2.0",
-                "php": "^7.1",
+                "php": "^7.2",
                 "sonata-project/admin-bundle": "^3.34",
                 "sonata-project/datagrid-bundle": "^2.4.0",
-                "sonata-project/doctrine-extensions": "^1.5.1",
-                "sonata-project/easy-extends-bundle": "^2.2",
+                "sonata-project/doctrine-extensions": "^1.8",
                 "sonata-project/form-extensions": "^0.1 || ^1.4",
                 "swiftmailer/swiftmailer": "^4.3 || ^5.0 || ^6.0",
                 "symfony/config": "^4.4",
@@ -5394,11 +5393,10 @@
                 "matthiasnoback/symfony-config-test": "^4.0",
                 "matthiasnoback/symfony-dependency-injection-test": "^4.0",
                 "nelmio/api-doc-bundle": "^2.4",
-                "sensio/framework-extra-bundle": "^5.5",
                 "sonata-project/doctrine-orm-admin-bundle": "^3.18",
                 "sonata-project/google-authenticator": "^1.0 || ^2.0",
                 "symfony/browser-kit": "^4.4 || ^5.1",
-                "symfony/phpunit-bridge": "^5.1"
+                "symfony/phpunit-bridge": "^5.1.1"
             },
             "suggest": {
                 "friendsofsymfony/rest-bundle": "For using the public API methods.",
@@ -5440,7 +5438,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2020-06-29T16:55:05+00:00"
+            "time": "2020-07-30T16:41:36+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -9912,16 +9910,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v4.4.10",
+            "version": "v4.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "79d3ef9096a6a6047dbc69218b68c7b7f63193af"
+                "reference": "a8ea9d97353294eb6783f2894ef8cee99a045822"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/79d3ef9096a6a6047dbc69218b68c7b7f63193af",
-                "reference": "79d3ef9096a6a6047dbc69218b68c7b7f63193af",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/a8ea9d97353294eb6783f2894ef8cee99a045822",
+                "reference": "a8ea9d97353294eb6783f2894ef8cee99a045822",
                 "shasum": ""
             },
             "require": {
@@ -9998,7 +9996,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-30T20:06:45+00:00"
+            "time": "2020-07-23T08:31:43+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -10689,12 +10687,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/package-builder.git",
-                "reference": "08d1459963a3e9ba569daf140a94fb7d5921e153"
+                "reference": "c13fa6414b1a75be97bf25722661c6175dae1530"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/package-builder/zipball/08d1459963a3e9ba569daf140a94fb7d5921e153",
-                "reference": "08d1459963a3e9ba569daf140a94fb7d5921e153",
+                "url": "https://api.github.com/repos/symplify/package-builder/zipball/c13fa6414b1a75be97bf25722661c6175dae1530",
+                "reference": "c13fa6414b1a75be97bf25722661c6175dae1530",
                 "shasum": ""
             },
             "require": {
