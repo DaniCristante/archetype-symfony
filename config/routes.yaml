@@ -1,6 +1,6 @@
 paginator:
     path: /pagination
-    controller: App\Controller\PageController::list
+    controller: App\Controller\ArticleController::list
 
 frontoffice:
     resource: routes/frontoffice.yaml

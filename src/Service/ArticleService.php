@@ -2,31 +2,31 @@
 
 namespace App\Service;
 
-use App\Repository\PageRepository;
+use App\Repository\ArticleRepository;
 use Knp\Component\Pager\PaginatorInterface;
-use App\ViewModel\PageListViewModel;
+use App\ViewModel\ArticleListViewModel;
 
-class PageService 
+class ArticleService 
 {
     private const MAX_RESULT = 5;
-    protected $pageRepository;
+    protected $articleRepository;
     protected $paginator;
     
     public function __construct(
-        PageRepository $pageRepository,
+        ArticleRepository $articleRepository,
         PaginatorInterface $paginator
     ){
-        $this->pageRepository = $pageRepository;
+        $this->articleRepository = $articleRepository;
         $this->paginator = $paginator;
     }
 
-    public function getPageListViewModel(int $page): PageListViewModel
+    public function getArticleListViewModel(int $page): ArticleListViewModel
     {
-        $queryBuilder = $this->pageRepository->getPagesQueryBuilder();
+        $queryBuilder = $this->articleRepository->getArticlesQueryBuilder();
 
         $paginator = $this->paginator->paginate($queryBuilder, $page, self::MAX_RESULT);
 
-        $model = new PageListViewModel();
+        $model = new ArticleListViewModel();
         $model->setPagination($paginator);
 
         return $model;

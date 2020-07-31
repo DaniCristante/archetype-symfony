@@ -4,7 +4,7 @@ namespace App\ViewModel;
 
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
-class PageListViewModel
+class ArticleListViewModel
 {
     protected $pagination;
     protected $paginationData;

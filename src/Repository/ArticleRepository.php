@@ -2,11 +2,11 @@
 
 namespace App\Repository;
 
-use App\Entity\Page;
+use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 
-class PageRepository 
+class ArticleRepository
 {
     protected $entityManager;
 
@@ -15,10 +15,10 @@ class PageRepository
         $this->entityManager = $entityManager;
     }
 
-    public function getPagesQueryBuilder()
+    public function getArticlesQueryBuilder()
     {
         return $this->entityManager->createQueryBuilder()
-            ->select('page')
-            ->from('App\Entity\Page', 'page');
+            ->select('article')
+            ->from('App\Entity\Article', 'article');
     }
 }
