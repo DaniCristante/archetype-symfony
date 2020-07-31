@@ -25,6 +25,7 @@ class ArticleController extends AbstractController
         $page = $request->get('page', 1);
         $model = $this->service->getArticleListViewModel($page);
         
-        return $this->renderer->renderResponse('pages/_list-page.html.twig', $model);
+        return $this->render('pages/_list-page.html.twig', ['model' => $model]);
+        // return $this->renderer->renderResponse('pages/_list-page.html.twig', $model);
     }
 }
