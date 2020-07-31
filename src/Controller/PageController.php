@@ -4,35 +4,27 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\PageRepository;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use App\Service\PageService;
 
 class PageController extends AbstractController
 {
-    protected $pageRepository;
-    protected $paginator;
+    protected $service;
 
     public function __construct(
-        PageRepository $pageRepository,
-        PaginatorInterface $paginator
+        PageService $service
     ){
-        //Usar PageService y RendererService
-        $this->pageRepository = $pageRepository;
-        $this->paginator = $paginator;
+        $this->service = $service;
     }
 
     public function list(Request $request)
     {
         $page = $request->get('page', 1);
-        //mover llamada repository a PageService, retornar modelo.
-        $queryBuilder = $this->pageRepository->getPagesQueryBuilder();
-        
-        $pagination = $this->paginator->paginate($queryBuilder, $page, 5);
+        $model = $this->service->getPageListViewModel($page);
+        dump($model);die();
 
         return $this->render('page/_list-page.html.twig', [
             'controller_name' => 'PageController',
-            'pagination' => $pagination
         ]);
     }
 }
