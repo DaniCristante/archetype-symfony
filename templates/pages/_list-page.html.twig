@@ -4,22 +4,21 @@
         <h1>Test Pagination</h1>
     </div>
     <div>
-        {% for article in model.pagination.items %}
+        {% for article in page.content.pagination.items %}
             <p>{{ article.title }}</p>
         {% endfor %}
-    </div>
-    <div>
-        {% if model.previousPage %}
-        {# TODO link to previous page #}
-            {{ model.previousPage }}
+
+        {% if page.content.previousPage %}
+            {{ page.content.previousPage }}
         {% endif %}
-        {% if model.nextPage %}
-        {# TODO link to next page #}
-            {{ model.nextPage }}
+        
+        {% if page.content.nextPage %}
+            {{ page.content.nextPage }}
         {% endif %}
+        
 
         {# Remove knp paginator render #}
-        {{knp_pagination_render(model.pagination)}}
+       {{ knp_pagination_render(page.content.pagination) }}
     </div>
 </div>
 {% endblock %}
