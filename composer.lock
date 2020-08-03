@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c3b105bc18d0a1917495af1f9e117b8",
+    "content-hash": "075cf9d836b54a93226b02002eab53ae",
     "packages": [
         {
             "name": "a2lix/auto-form-bundle",
@@ -10689,12 +10689,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/package-builder.git",
-                "reference": "08d1459963a3e9ba569daf140a94fb7d5921e153"
+                "reference": "c13fa6414b1a75be97bf25722661c6175dae1530"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/package-builder/zipball/08d1459963a3e9ba569daf140a94fb7d5921e153",
-                "reference": "08d1459963a3e9ba569daf140a94fb7d5921e153",
+                "url": "https://api.github.com/repos/symplify/package-builder/zipball/c13fa6414b1a75be97bf25722661c6175dae1530",
+                "reference": "c13fa6414b1a75be97bf25722661c6175dae1530",
                 "shasum": ""
             },
             "require": {
@@ -13622,16 +13622,16 @@
         },
         {
             "name": "psalm/plugin-symfony",
-            "version": "v1.4.0",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/psalm-plugin-symfony.git",
-                "reference": "e6ae163a5402ecfdde03f667a0eda687b30f6ed5"
+                "reference": "d13b6aa27aa0d5b8fab0e5874630c2e2c4546d21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/psalm-plugin-symfony/zipball/e6ae163a5402ecfdde03f667a0eda687b30f6ed5",
-                "reference": "e6ae163a5402ecfdde03f667a0eda687b30f6ed5",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-symfony/zipball/d13b6aa27aa0d5b8fab0e5874630c2e2c4546d21",
+                "reference": "d13b6aa27aa0d5b8fab0e5874630c2e2c4546d21",
                 "shasum": ""
             },
             "require": {
@@ -13641,7 +13641,6 @@
                 "vimeo/psalm": "^3.12"
             },
             "require-dev": {
-                "codeception/base": "^2.5",
                 "doctrine/orm": "^2.7",
                 "phpunit/phpunit": "~7.5",
                 "symfony/console": "*",
@@ -13673,7 +13672,7 @@
                 }
             ],
             "description": "Psalm Plugin for Symfony",
-            "time": "2020-07-06T03:29:10+00:00"
+            "time": "2020-07-28T18:21:03+00:00"
         },
         {
             "name": "runroom-packages/testing",
