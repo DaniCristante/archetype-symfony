@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c3b105bc18d0a1917495af1f9e117b8",
+    "content-hash": "f7d3c44bf7cebbb1c265af0ea0fac46d",
     "packages": [
         {
             "name": "a2lix/auto-form-bundle",
@@ -10689,12 +10689,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/package-builder.git",
-                "reference": "08d1459963a3e9ba569daf140a94fb7d5921e153"
+                "reference": "c13fa6414b1a75be97bf25722661c6175dae1530"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/package-builder/zipball/08d1459963a3e9ba569daf140a94fb7d5921e153",
-                "reference": "08d1459963a3e9ba569daf140a94fb7d5921e153",
+                "url": "https://api.github.com/repos/symplify/package-builder/zipball/c13fa6414b1a75be97bf25722661c6175dae1530",
+                "reference": "c13fa6414b1a75be97bf25722661c6175dae1530",
                 "shasum": ""
             },
             "require": {
@@ -14480,7 +14480,7 @@
         },
         {
             "name": "symfony/debug-bundle",
-            "version": "v5.1.2",
+            "version": "v5.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug-bundle.git",
