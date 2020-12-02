@@ -52,7 +52,7 @@
         "symfony/twig-bundle": "4.4.11",
         "symfony/webpack-encore-bundle": "1.7.3",
         "twig/extra-bundle": "3.0.4",
-        "twig/string-extra": "3.0.4",
+        "twig/string-extra": "3.1.1",
         "twig/twig": "2.13.0"
     },
     "require-dev": {
