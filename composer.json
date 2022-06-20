@@ -22,6 +22,7 @@
         "gedmo/doctrine-extensions": "3.5.0",
         "jaybizzle/crawler-detect": "1.2.110",
         "knplabs/doctrine-behaviors": "2.6.0",
+        "liip/imagine-bundle": "2.7.6",
         "runroom-packages/basic-page-bundle": "0.15.3",
         "runroom-packages/ckeditor-sonata-media-bundle": "0.15.3",
         "runroom-packages/cookies-bundle": "0.15.3",

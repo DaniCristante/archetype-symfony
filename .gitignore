@@ -30,3 +30,7 @@ public/build/*
 npm-debug.log
 node_modules
 tsconfig.tsbuildinfo
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###

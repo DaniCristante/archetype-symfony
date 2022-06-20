@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 return [
     A2lix\AutoFormBundle\A2lixAutoFormBundle::class => ['all' => true],
     A2lix\TranslationFormBundle\A2lixTranslationFormBundle::class => ['all' => true],
@@ -43,4 +41,5 @@ return [
     Runroom\UserBundle\RunroomUserBundle::class => ['all' => true],
     Zenstruck\Foundry\ZenstruckFoundryBundle::class => ['dev' => true, 'test' => true, 'staging' => true],
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true, 'staging' => true],
+    Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
 ];
