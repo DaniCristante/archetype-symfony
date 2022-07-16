@@ -11,3 +11,6 @@ service:
         resource: '../Controller/'
         public: true
         tags: ['controller.service_arguments']
+
+    app.course.tiered_pricing_service:
+        class: App\Course\TieredPricingBundle\Service\TieredPricingService
