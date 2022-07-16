@@ -6,6 +6,8 @@ service:
 
     App\Course\TieredPricingBundle\:
         resource: '../*'
+        exclude:
+            - ../Entity/
 
     App\Course\TieredPricingBundle\Controller\:
         resource: '../Controller/'
