@@ -4,6 +4,10 @@ runroom_samples:
 runroom_cookies:
     resource: "@RunroomCookiesBundle/Resources/config/routing.yaml"
 
+course_tiered_pricing:
+    prefix: /tiered-pricing
+    resource: "@CourseTieredPricingBundle/config/routing.yaml"
+
 # Must be the last one
 runroom_basic_page:
     resource: "@RunroomBasicPageBundle/Resources/config/routing.yaml"

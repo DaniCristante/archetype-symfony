@@ -1,0 +1,3 @@
+tiered_pricing:
+    path: /pricing
+    controller: App\Course\TieredPricingBundle\Controller\TieredPricingController::pricing

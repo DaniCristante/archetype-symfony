@@ -1,0 +1,13 @@
+service:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\Course\TieredPricingBundle\:
+        resource: '../*'
+
+    App\Course\TieredPricingBundle\Controller\:
+        resource: '../Controller/'
+        public: true
+        tags: ['controller.service_arguments']
