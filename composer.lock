@@ -5060,7 +5060,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DaniCristante/RunroomSamplesBundle",
-                "reference": "b76a32655b099d683efbd10f6cebbd435b3e8068"
+                "reference": "2bf7d1b7f19a0304dc15a30e434cb6f1deb53120"
             },
             "require": {
                 "a2lix/translation-form-bundle": "^3.0.4",
@@ -5162,7 +5162,7 @@
                 "symfony",
                 "twig"
             ],
-            "time": "2022-07-15T20:57:00+00:00"
+            "time": "2022-07-16T18:19:27+00:00"
         },
         {
             "name": "sonata-project/admin-bundle",
