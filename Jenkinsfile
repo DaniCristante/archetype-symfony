@@ -11,85 +11,81 @@ pipeline {
 
     options {
         buildDiscarder(logRotator(numToKeepStr: '5'))
-        disableConcurrentBuilds()
+        disableConcurrentBuilds(abortPrevious: true)
     }
 
     stages {
-        stage('Continuous Integration - PHP') {
-            agent {
-                docker {
-                    image 'runroom/php8.1-cli'
-                    args '-v $HOME/composer:/home/jenkins/.composer:z'
-                    reuseNode true
+        stage('Continuous Integration') {
+            parallel {
+                stage('PHP') {
+                    agent {
+                        docker {
+                            image 'runroom/php8.1-cli'
+                            args '-v $HOME/composer:/home/jenkins/.composer:z'
+                            reuseNode true
+                        }
+                    }
+
+                    steps {
+                        // Install
+                        sh 'composer install --no-progress --no-interaction'
+
+                        // Lint + QA
+                        sh 'composer php-cs-fixer -- --dry-run'
+                        sh 'composer phpstan'
+                        sh 'composer psalm -- --threads=$(nproc)'
+                        sh 'composer rector -- --dry-run'
+                        sh 'composer normalize --dry-run'
+                        sh 'composer lint-container'
+                        sh 'composer lint-yaml'
+                        sh 'composer lint-twig'
+
+                        // Tests
+                        sh 'vendor/bin/phpunit --log-junit coverage/unitreport.xml --coverage-html coverage'
+
+                        // Report
+                        xunit([PHPUnit(
+                            deleteOutputFiles: false,
+                            failIfNotNew: false,
+                            pattern: 'coverage/unitreport.xml',
+                            skipNoTestFiles: true,
+                            stopProcessingIfError: false
+                        )])
+                        publishHTML(target: [
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'coverage',
+                            reportFiles: 'index.html',
+                            reportName: 'Coverage Report'
+                        ])
+                    }
+                }
+
+                stage('Node') {
+                    agent {
+                        docker {
+                            image 'runroom/node18'
+                            args '-v $HOME/npm:/home/node/.npm:z'
+                            reuseNode true
+                        }
+                    }
+
+                    steps {
+                        sh 'npm clean-install'
+                        sh 'npm run lint'
+                        sh 'npm run build'
+                    }
                 }
             }
-
-            steps {
-                // Install
-                sh 'composer install --no-progress --no-interaction'
-
-                // Lint + QA
-                sh 'composer php-cs-fixer -- --dry-run'
-                sh 'composer phpstan'
-                sh 'composer psalm -- --threads=$(nproc)'
-                sh 'composer rector -- --dry-run'
-                sh 'composer normalize --dry-run'
-                sh 'composer lint-container'
-                sh 'composer lint-yaml'
-                sh 'composer lint-twig'
-
-                // Tests
-                sh 'vendor/bin/phpunit --log-junit coverage/unitreport.xml --coverage-html coverage'
-
-                // Report
-                xunit([PHPUnit(
-                    deleteOutputFiles: false,
-                    failIfNotNew: false,
-                    pattern: 'coverage/unitreport.xml',
-                    skipNoTestFiles: true,
-                    stopProcessingIfError: false
-                )])
-                publishHTML(target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll: true,
-                    reportDir: 'coverage',
-                    reportFiles: 'index.html',
-                    reportName: 'Coverage Report'
-                ])
-            }
         }
 
-        stage('Continuous Integration - Node') {
-            agent {
-                docker {
-                    image 'runroom/node17'
-                    args '-v $HOME/npm:/home/node/.npm:z'
-                    reuseNode true
-                }
-            }
-
-            steps {
-                // Install
-                sh 'npm clean-install'
-
-                // Lint + QA
-                sh 'npx stylelint assets/css'
-                sh 'npx eslint assets/js'
-                sh 'npx prettier --check .github config assets translations webpack.config.js babel.config.js .eslintrc.js stylelint.config.js postcss.config.js prettier.config.js docker-compose.yaml servers.yaml'
-                sh 'npx tsc --pretty false'
-
-                // Build
-                sh 'npx encore production'
-            }
-        }
-
-        stage('Continuous Deployment - Production') {
-            when { expression { return env.BRANCH_NAME in ['main'] } }
-            steps {
-                build job: "${FOLDER_NAME}/Production Deploy", wait: false
-            }
-        }
+        // stage('Continuous Deployment - Production') {
+        //     when { expression { return env.BRANCH_NAME in ['main'] } }
+        //     steps {
+        //         build job: "${FOLDER_NAME}/Production Deploy", wait: false
+        //     }
+        // }
     }
 
     post {

@@ -1,4 +1,4 @@
-name: qa
+name: QA
 
 on:
     push:
@@ -7,6 +7,7 @@ on:
 
 jobs:
     php:
+        name: PHP ${{ matrix.php }}
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -30,21 +31,16 @@ jobs:
             - run: composer lint-yaml
             - run: composer lint-twig
     node:
+        name: Node ${{ matrix.node }}
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                node: ["17.x"]
+                node: ["18.x"]
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node }}
             - uses: bahmutov/npm-install@v1
-            - run: npx stylelint assets/css
-            - run: npx eslint assets/js
-            - run: npx tsc --pretty false
-            - run:
-                  npx prettier --check .github config assets translations webpack.config.js
-                  babel.config.js .eslintrc.js stylelint.config.js postcss.config.js
-                  prettier.config.js docker-compose.yaml servers.yaml
-            - run: npx encore production
+            - run: npm run lint
+            - run: npm run build

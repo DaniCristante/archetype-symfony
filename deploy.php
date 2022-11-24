@@ -16,29 +16,25 @@ set('clear_paths', ['assets', 'doc', 'docker', 'node_modules', 'tests']);
 set('default_timeout', null);
 set('allow_anonymous_stats', false);
 set('console', 'bin/console');
-set('composer_options', '{{composer_action}} --classmap-authoritative --no-progress --no-interaction --no-dev');
+set('composer_options', '--classmap-authoritative --no-progress --no-interaction --no-dev');
 
 set('bin/npm', function () {
     return run('. ~/.nvm/nvm.sh && nvm use > /dev/null 2>&1 && which npm');
 });
 
-set('bin/npx', function () {
-    return run('. ~/.nvm/nvm.sh && nvm use > /dev/null 2>&1 && which npx');
-});
-
 task('app', function (): void {
     cd('{{release_path}}');
 
-    run('{{bin/php}} {{bin/composer}} symfony:dump-env');
+    run('{{bin/composer}} symfony:dump-env');
     run('{{bin/php}} {{console}} cache:warmup --no-interaction');
     run('{{bin/php}} {{console}} assets:install public --relative');
-})->setPrivate();
+})->hidden();
 
 task('migrations', function (): void {
     cd('{{release_path}}');
 
     run('{{bin/php}} {{console}} doctrine:migrations:migrate --no-interaction --allow-no-migration');
-})->onRoles('production');
+})->select('stage=production');
 
 task('fixtures', function (): void {
     cd('{{release_path}}');
@@ -46,14 +42,14 @@ task('fixtures', function (): void {
     run('{{bin/php}} {{console}} doctrine:schema:drop --full-database --no-interaction --force');
     run('{{bin/php}} {{console}} doctrine:migrations:migrate --no-interaction --allow-no-migration');
     run('{{bin/php}} {{console}} doctrine:fixtures:load --no-interaction --env=staging');
-})->onRoles('staging');
+})->select('stage=staging');
 
 task('frontend:build', function (): void {
     cd('{{release_path}}');
 
     run('{{bin/npm}} clean-install');
-    run('{{bin/npx}} encore production');
-})->setPrivate();
+    run('{{bin/npm}} run build');
+})->hidden();
 
 task('restart-workers', function (): void {
     if (has('previous_release')) {
@@ -61,7 +57,7 @@ task('restart-workers', function (): void {
 
         run('{{bin/php}} {{console}} messenger:stop-workers');
     }
-})->setPrivate();
+})->hidden();
 
 after('deploy:vendors', 'frontend:build');
 after('frontend:build', 'app');
@@ -71,5 +67,4 @@ before('deploy:symlink', 'deploy:clear_paths');
 after('deploy:symlink', 'restart-workers');
 after('deploy:failed', 'deploy:unlock');
 
-inventory('servers.yaml')
-    ->user(getenv('DEPLOYER_USER'));
+import('servers.php');

@@ -10,30 +10,16 @@ Encore.setOutputPath('public/build/')
       pattern: /\.(png|jpg|jpeg|gif|ico)$/
     },
     { from: './assets/img', to: 'svg/[name].svg', pattern: /\.svg$/ },
-    { from: './assets/fonts', to: 'fonts/[name].[contenthash].[ext]', pattern: /\.(woff|woff2)$/ },
-
-    {
-      from: './node_modules/ckeditor4/',
-      to: 'ckeditor/[path][name].[ext]',
-      pattern: /\.(js|css)$/,
-      includeSubdirectories: false
-    },
-    { from: './node_modules/ckeditor4/adapters', to: 'ckeditor/adapters/[path][name].[ext]' },
-    { from: './node_modules/ckeditor4/lang', to: 'ckeditor/lang/[path][name].[ext]' },
-    { from: './node_modules/ckeditor4/plugins', to: 'ckeditor/plugins/[path][name].[ext]' },
-    { from: './node_modules/ckeditor4/skins', to: 'ckeditor/skins/[path][name].[ext]' }
+    { from: './assets/fonts', to: 'fonts/[name].[contenthash].[ext]', pattern: /\.(woff|woff2)$/ }
   ])
   .enableSingleRuntimeChunk()
   .cleanupOutputBeforeBuild(['**/*', '!.gitignore'])
   .enableBuildNotifications()
   .enableSourceMaps(!Encore.isProduction())
   .enableVersioning(Encore.isProduction())
-  .enableTypeScriptLoader(tsConfig => {
-    tsConfig.compilerOptions = {
-      noEmit: false
-    };
-  })
+  .enableTypeScriptLoader()
   .enablePostCssLoader()
+  .enableForkedTypeScriptTypesChecking()
   .enableBuildCache({ config: [__filename] })
   .enableEslintPlugin()
   .addPlugin(
